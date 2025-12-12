@@ -2,7 +2,6 @@ package org.izv.dam.psp.agenda.model.repository
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import org.izv.dam.psp.agenda.model.data.Contact
 import java.io.File
@@ -54,11 +53,16 @@ class ContactFileRepository (private val context: Context){
                     val line = lastLine.split(";")
 
                     if(line.size >= 1) {
-                        return@withContext line[0].toInt()
+                        line[0].toInt()
+                    }else{
+                        0
                     }
+                }else{
+                    0
                 }
+            }else {
+                0
             }
-            0
         }
     }
 
@@ -68,7 +72,7 @@ class ContactFileRepository (private val context: Context){
             val newContact = "${contact.id};${contact.name};${contact.phone}"
 
             if(file.exists() && file.length()>0) {
-                file.appendText("\n$newContact")
+                file.appendText("\n${newContact}")
             }else{
                 file.writeText(newContact)
             }

@@ -41,8 +41,4 @@ class ContactFileViewModel (private val repository: ContactFileRepository): View
             _contacts.value = repository.deleteContact(contact)
         }
     }
-
-    fun getContactById(id: Int): Contact? {
-        return _contacts.value.firstOrNull { it.id == id }
-    }
 }

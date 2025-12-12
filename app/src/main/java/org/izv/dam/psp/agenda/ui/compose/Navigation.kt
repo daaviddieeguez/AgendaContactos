@@ -52,7 +52,6 @@ import org.izv.dam.psp.agenda.ui.viewmodel.ContactFileViewModel
             composable("edit-contact/{contactId}") { backStackEntry ->
                 val idString = backStackEntry.arguments?.getString("contactId")
 
-                // Si idString es nulo, esto devuelve 0. Eso es lo que te está pasando.
                 val contactId = idString?.toIntOrNull() ?: 0
 
                 EditContact(
